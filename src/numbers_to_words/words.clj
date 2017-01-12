@@ -1,12 +1,5 @@
 (ns numbers-to-words.words)
 
-(def lookup {0 0
-             1 1
-             2 2
-             3 3
-             4 3
-             5 3})
-
 (def tens {"one" "ten"
            "two" "twenty"
            "three" "thirty"
@@ -56,5 +49,5 @@
 
 (defn number-to-words [[msd mag :as msd-mag]]
   (if (integer? msd)
-    ((words mag) (in-units msd))
+    [((words mag) (in-units msd))]
     ((words mag) (map number-to-words msd))))
