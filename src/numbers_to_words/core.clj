@@ -17,15 +17,18 @@
 
 (def msd-magnitude (juxt most-significant-digits closest-power-of-10))
 
-(defn split-into-units [number]
+(defn split-into-units-greater-than-twenty [number]
   (loop [n number units []]
     (if (zero? n)
       units
-      (if (< n 20)
-        (conj units [n 1])
-        (let [msd-mag (msd-magnitude n)
-              residue (- n (apply * msd-mag))]
-          (recur residue (conj units msd-mag)))))))
+      (let [msd-mag (msd-magnitude n)
+            residue (- n (apply * msd-mag))]
+        (recur residue (conj units msd-mag))))))
+
+(defn split-into-units [number]
+  (if (< number 20)
+    [[number 1]]
+    (split-into-units-greater-than-twenty number)))
 
 (defn split-further [[msd r :as unit]]
   (if (< msd 20)

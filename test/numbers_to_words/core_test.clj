@@ -5,6 +5,7 @@
 (deftest splitting-into-units-test
   (testing "unit's place"
     (are [expected actual] (= expected (split-into-units actual))
+      [[0 1]] 0
       [[1 1]] 1
       [[2 1]] 2
       [[3 1]] 3
@@ -34,4 +35,15 @@
       [[6 10]] 60
       [[7 10]] 70
       [[8 10]] 80
-      [[9 10]] 90)))
+      [[9 10]] 90))
+  (testing "ten's place when there is a digit in the unit's place"
+    (are [expected actual] (= expected (split-into-units actual))
+      [[2 10] [1 1]] 21
+      [[2 10] [2 1]] 22
+      [[2 10] [3 1]] 23
+      [[2 10] [4 1]] 24
+      [[2 10] [5 1]] 25
+      [[2 10] [6 1]] 26
+      [[2 10] [7 1]] 27
+      [[2 10] [8 1]] 28
+      [[2 10] [9 1]] 29)))
