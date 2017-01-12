@@ -46,4 +46,26 @@
       [[2 10] [6 1]] 26
       [[2 10] [7 1]] 27
       [[2 10] [8 1]] 28
-      [[2 10] [9 1]] 29)))
+      [[2 10] [9 1]] 29))
+  (testing "hundred's place"
+    (are [expected actual] (= expected (split-into-units actual))
+      [[1 100]] 100
+      [[2 100]] 200
+      [[3 100]] 300
+      [[4 100]] 400
+      [[5 100]] 500
+      [[6 100]] 600
+      [[7 100]] 700
+      [[8 100]] 800
+      [[9 100]] 900))
+  (testing "hundred's place when there are digits in the unit's place"
+    (are [expected actual] (= expected (split-into-units actual))
+      [[1 100] [1 1]] 101
+      [[1 100] [2 1]] 102
+      [[1 100] [3 1]] 103
+      [[1 100] [4 1]] 104
+      [[1 100] [5 1]] 105
+      [[1 100] [6 1]] 106
+      [[1 100] [7 1]] 107
+      [[1 100] [8 1]] 108
+      [[1 100] [9 1]] 109)))
