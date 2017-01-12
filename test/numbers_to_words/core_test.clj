@@ -68,4 +68,37 @@
       [[1 100] [6 1]] 106
       [[1 100] [7 1]] 107
       [[1 100] [8 1]] 108
-      [[1 100] [9 1]] 109)))
+      [[1 100] [9 1]] 109))
+  (testing "hundred's place when there are digits in the ten's place"
+    (are [expected actual] (= expected (split-into-units actual))
+      [[1 100] [1 10]] 110
+      [[1 100] [2 10]] 120
+      [[1 100] [3 10]] 130
+      [[1 100] [4 10]] 140
+      [[1 100] [5 10]] 150
+      [[1 100] [6 10]] 160
+      [[1 100] [7 10]] 170
+      [[1 100] [8 10]] 180
+      [[1 100] [9 10]] 190))
+  (testing "hundred's place when there are digits in the ten's and unit's place"
+    (are [expected actual] (= expected (split-into-units actual))
+      [[1 100] [1 10] [1 1]] 111
+      [[1 100] [1 10] [2 1]] 112
+      [[1 100] [1 10] [3 1]] 113
+      [[1 100] [1 10] [4 1]] 114
+      [[1 100] [1 10] [5 1]] 115
+      [[1 100] [1 10] [6 1]] 116
+      [[1 100] [1 10] [7 1]] 117
+      [[1 100] [1 10] [8 1]] 118
+      [[1 100] [1 10] [9 1]] 119))
+  (testing "thousand's place"
+    (are [expected actual] (= expected (split-into-units actual))
+      [[1 1000]] 1000
+      [[2 1000]] 2000
+      [[3 1000]] 3000
+      [[4 1000]] 4000
+      [[5 1000]] 5000
+      [[6 1000]] 6000
+      [[7 1000]] 7000
+      [[8 1000]] 8000
+      [[9 1000]] 9000)))
