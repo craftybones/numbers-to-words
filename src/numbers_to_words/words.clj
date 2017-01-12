@@ -10,7 +10,8 @@
            "eight" "eighty"
            "nine" "ninety"})
 
-(def units {1 "one"
+(def units {0 "zero"
+            1 "one"
             2 "two"
             3 "three"
             4 "four"
