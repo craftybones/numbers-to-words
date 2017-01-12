@@ -31,16 +31,16 @@
             18 "eighteen"
             19 "nineteen"})
 
-(defn in-thousands [msd]
+(defn- in-thousands [msd]
   [msd "thousand"])
 
-(defn in-hundreds [msd]
+(defn- in-hundreds [msd]
   [msd "hundred"])
 
-(defn in-tens [msd]
+(defn- in-tens [msd]
   (tens msd))
 
-(defn in-units [msd]
+(defn- in-units [msd]
   (units msd))
 
 (def words {1 identity
