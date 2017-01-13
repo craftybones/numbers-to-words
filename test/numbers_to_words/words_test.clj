@@ -4,27 +4,27 @@
 
 (deftest num-to-words
   (testing "units place"
-    (are [actual expected] (= actual expected)
-      ["zero"] (number-to-words [0 1])
-      ["one"] (number-to-words [1 1])
-      ["two"] (number-to-words [2 1])
-      ["three"] (number-to-words [3 1])
-      ["four"] (number-to-words [4 1])
-      ["five"] (number-to-words [5 1])
-      ["six"] (number-to-words [6 1])
-      ["seven"] (number-to-words [7 1])
-      ["eight"] (number-to-words [8 1])
-      ["nine"] (number-to-words [9 1])
-      ["ten"] (number-to-words [10 1])
-      ["eleven"] (number-to-words [11 1])
-      ["twelve"] (number-to-words [12 1])
-      ["thirteen"] (number-to-words [13 1])
-      ["fourteen"] (number-to-words [14 1])
-      ["fifteen"] (number-to-words [15 1])
-      ["sixteen"] (number-to-words [16 1])
-      ["seventeen"] (number-to-words [17 1])
-      ["eighteen"] (number-to-words [18 1])
-      ["nineteen"] (number-to-words [19 1])))
+    (are [actual expected] (= actual (number-to-words expected))
+      ["zero"] [0 1]
+      ["one"] [1 1]
+      ["two"] [2 1]
+      ["three"] [3 1]
+      ["four"] [4 1]
+      ["five"] [5 1]
+      ["six"] [6 1]
+      ["seven"] [7 1]
+      ["eight"] [8 1]
+      ["nine"] [9 1]
+      ["ten"] [10 1]
+      ["eleven"] [11 1]
+      ["twelve"] [12 1]
+      ["thirteen"] [13 1]
+      ["fourteen"] [14 1]
+      ["fifteen"] [15 1]
+      ["sixteen"] [16 1]
+      ["seventeen"] [17 1]
+      ["eighteen"] [18 1]
+      ["nineteen"] [19 1]))
   (testing "tens place"
     (are [actual expected] (= actual (number-to-words expected))
       ["ten"] [1 10]
