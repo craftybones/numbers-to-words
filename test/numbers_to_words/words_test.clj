@@ -86,3 +86,11 @@
       [[[["one" "hundred"]] ["eleven"]] "thousand"] [[[1 100] [11 1]] 1000]
       [[[["one" "hundred"]] ["twenty"]] "thousand"] [[[1 100] [2 10]] 1000]
       [[[["one" "hundred"]] ["twenty"] ["five"]] "thousand"] [[[1 100] [2 10] [5 1]] 1000])))
+
+(deftest adding-prefix
+  (testing "suggests a prefix for hundred"
+    (is (= [["one" "hundred"] "and"] (add-prefix [["one"] nil] "hundred"))))
+  (testing "adds a prefix when prefix present"
+    (is (= [["one" "hundred" "and" "one"] nil] (add-prefix [["one" "hundred"] "and"] "one"))))
+  (testing "does not add a prefix when prefix not present and does not suggest a prefix"
+    (is (= [["twenty" "three" "thousand"] nil] (add-prefix [["twenty" "three"] nil] "thousand")))))

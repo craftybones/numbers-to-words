@@ -52,3 +52,13 @@
   (if (integer? msd)
     [((words mag) (in-units msd))]
     ((words mag) (map number-to-words msd))))
+
+(defn prefix-for [term]
+  ({"hundred" "and"} term))
+
+(defn add-prefix
+  [[terms prefix] next-term]
+  (let [new-terms (if prefix
+                    (conj terms prefix next-term)
+                    (conj terms next-term))]
+    [new-terms (prefix-for next-term)]))

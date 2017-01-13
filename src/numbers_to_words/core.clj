@@ -38,21 +38,11 @@
 (def break-number-down
   (comp (partial map split-further) split-into-units))
 
-(defn prefix-for [term]
-  ({"hundred" "and"} term))
-
-(defn add-prefix
-  [[terms prefix] next-term]
-  (let [new-terms (if prefix
-                    (conj terms prefix next-term)
-                    (conj terms next-term))]
-    [new-terms (prefix-for next-term)]))
-
 (defn in-words [number]
   (->> number
        break-number-down
        (map words/number-to-words)
        flatten
-       (reduce add-prefix [[] nil])
+       (reduce words/add-prefix [[] nil])
        first
        (cstr/join " ")))
