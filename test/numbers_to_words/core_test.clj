@@ -363,4 +363,15 @@
       700 "seven hundred"
       800 "eight hundred"
       900 "nine hundred"
-      1000 "one thousand")))
+      1000 "one thousand"))
+  (testing "1000s"
+    (are [actual expected] (= (in-words actual) expected)
+      2000 "two thousand"
+      3000 "three thousand"
+      4000 "four thousand"
+      5000 "five thousand"
+      6000 "six thousand"
+      7000 "seven thousand"
+      8000 "eight thousand"
+      9000 "nine thousand"
+      10000 "ten thousand")))
