@@ -71,7 +71,7 @@
       [[1 100] [9 1]] 109))
   (testing "hundred's place when there are digits in the ten's place"
     (are [expected actual] (= expected (split-into-units actual))
-      [[1 100] [1 10]] 110
+      [[1 100] [10 1]] 110
       [[1 100] [2 10]] 120
       [[1 100] [3 10]] 130
       [[1 100] [4 10]] 140
@@ -82,15 +82,15 @@
       [[1 100] [9 10]] 190))
   (testing "hundred's place when there are digits in the ten's and unit's place"
     (are [expected actual] (= expected (split-into-units actual))
-      [[1 100] [1 10] [1 1]] 111
-      [[1 100] [1 10] [2 1]] 112
-      [[1 100] [1 10] [3 1]] 113
-      [[1 100] [1 10] [4 1]] 114
-      [[1 100] [1 10] [5 1]] 115
-      [[1 100] [1 10] [6 1]] 116
-      [[1 100] [1 10] [7 1]] 117
-      [[1 100] [1 10] [8 1]] 118
-      [[1 100] [1 10] [9 1]] 119))
+      [[1 100] [11 1]] 111
+      [[1 100] [12 1]] 112
+      [[1 100] [13 1]] 113
+      [[1 100] [14 1]] 114
+      [[1 100] [15 1]] 115
+      [[1 100] [16 1]] 116
+      [[1 100] [17 1]] 117
+      [[1 100] [18 1]] 118
+      [[1 100] [19 1]] 119))
   (testing "thousand's place"
     (are [expected actual] (= expected (split-into-units actual))
       [[1 1000]] 1000
@@ -123,8 +123,8 @@
       [[[2 10] [1 1]] 1000] [21 1000]
       [[[1 100]] 1000] [100 1000]
       [[[1 100] [1 1]] 1000] [101 1000]
-      [[[1 100] [1 10]] 1000] [110 1000]
-      [[[1 100] [1 10] [1 1]] 1000] [111 1000]))
+      [[[1 100] [10 1]] 1000] [110 1000]
+      [[[1 100] [11 1]] 1000] [111 1000]))
   (testing "split thousand should not split further when msd < 20"
     (are [expected actual] (= expected (split-further actual))
       [1 1] [1 1]
@@ -193,7 +193,7 @@
       [[9 100]] 900))
   (testing "hundred's place with a ten's place"
     (are [expected actual] (= expected (break-number-down actual))
-      [[1 100] [1 10]] 110
+      [[1 100] [10 1]] 110
       [[1 100] [2 10]] 120
       [[1 100] [3 10]] 130
       [[1 100] [4 10]] 140
@@ -204,15 +204,15 @@
       [[1 100] [9 10]] 190))
   (testing "hundred's place with a ten's place and unit's place"
     (are [expected actual] (= expected (break-number-down actual))
-      [[1 100] [1 10] [1 1]] 111
-      [[1 100] [1 10] [2 1]] 112
-      [[1 100] [1 10] [3 1]] 113
-      [[1 100] [1 10] [4 1]] 114
-      [[1 100] [1 10] [5 1]] 115
-      [[1 100] [1 10] [6 1]] 116
-      [[1 100] [1 10] [7 1]] 117
-      [[1 100] [1 10] [8 1]] 118
-      [[1 100] [1 10] [9 1]] 119))
+      [[1 100] [11 1]] 111
+      [[1 100] [12 1]] 112
+      [[1 100] [13 1]] 113
+      [[1 100] [14 1]] 114
+      [[1 100] [15 1]] 115
+      [[1 100] [16 1]] 116
+      [[1 100] [17 1]] 117
+      [[1 100] [18 1]] 118
+      [[1 100] [19 1]] 119))
   (testing "thousand's place"
     (are [expected actual] (= expected (break-number-down actual))
       [[1 1000]] 1000
@@ -240,8 +240,8 @@
       [[[[2 10] [1 1]] 1000]] 21000
       [[[[1 100]] 1000]] 100000
       [[[[1 100] [1 1]] 1000]] 101000
-      [[[[1 100] [1 10]] 1000]] 110000
-      [[[[1 100] [1 10] [1 1]] 1000]] 111000))
+      [[[[1 100] [10 1]] 1000]] 110000
+      [[[[1 100] [11 1]] 1000]] 111000))
   (testing "compound numbers above thousand"
     (are [expected actual] (= expected (break-number-down actual))
       [[1 1000] [2 100] [3 10] [4 1]] 1234
@@ -374,4 +374,25 @@
       7000 "seven thousand"
       8000 "eight thousand"
       9000 "nine thousand"
-      10000 "ten thousand")))
+      10000 "ten thousand"
+      11000 "eleven thousand"
+      12000 "twelve thousand"
+      13000 "thirteen thousand"
+      14000 "fourteen thousand"
+      15000 "fifteen thousand"
+      16000 "sixteen thousand"
+      17000 "seventeen thousand"
+      18000 "eighteen thousand"
+      19000 "nineteen thousand"
+      20000 "twenty thousand"))
+  (testing "hundred and...(prefix)"
+    (are [actual expected] (= (in-words actual) expected)
+      101 "one hundred and one"
+      110 "one hundred and ten"
+      118 "one hundred and eighteen"
+      117 "one hundred and seventeen"
+      123 "one hundred and twenty three"
+      999 "nine hundred and ninety nine"))
+  #_(testing "thousand and..."
+    (are [actual expected] (= (in-words actual) expected)
+      1001 "one thousand and one")))

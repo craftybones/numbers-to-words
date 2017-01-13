@@ -26,9 +26,19 @@
         (recur residue (conj units msd-mag))))))
 
 (defn split-into-units [number]
-  (if (< number 20)
-    [[number 1]]
-    (split-into-units-greater-than-twenty number)))
+  (if (zero? number)
+    [[0 1]]
+    (loop [n number units []]
+      (cond
+        (zero? n) units
+        (< n 20) (conj units [n 1])
+        :else (let [msd-mag (msd-magnitude n)
+                    residue (- n (apply * msd-mag))]
+                (recur residue (conj units msd-mag)))))))
+;; (defn split-into-units [number]
+;;   (if (< number 20)
+;;     [[number 1]]
+;;     (split-into-units-greater-than-twenty number)))
 
 (defn split-further [[msd r :as unit]]
   (if (< msd 20)
