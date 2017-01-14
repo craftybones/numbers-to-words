@@ -15,7 +15,7 @@
        read-string))
 
 (defn closest-power-of-ten [x]
-  (->> x
+  (-> x
       str
       count
       dec
