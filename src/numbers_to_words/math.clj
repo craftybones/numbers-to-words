@@ -1,4 +1,4 @@
-(ns numbers-to-words.new)
+(ns numbers-to-words.math)
 
 (def concatv (comp vec concat))
 

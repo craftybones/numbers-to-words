@@ -1,6 +1,6 @@
-(ns numbers-to-words.new-test
+(ns numbers-to-words.math-test
   (:require [clojure.test :refer :all]
-            [numbers-to-words.new :refer :all]))
+            [numbers-to-words.math :refer :all]))
 
 #_(testing "a message goes here"
   (are [actual expected] (= (split-into-terms actual) expected)))
