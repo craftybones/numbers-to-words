@@ -2,6 +2,9 @@
   (:require [clojure.test :refer :all]
             [numbers-to-words.new :refer :all]))
 
+#_(testing "a message goes here"
+  (are [actual expected] (= (split-into-terms actual) expected)))
+
 (deftest splitting-into-terms
   (testing "random assorted numbers"
     (are [actual expected] (= (split-into-terms actual) expected)
@@ -330,4 +333,42 @@
       96000 [90 6 1000]
       97000 [90 7 1000]
       98000 [90 8 1000]
-      99000 [90 9 1000])))
+      99000 [90 9 1000]))
+  (testing "1000s with hundreds, tens and units place after them"
+    (are [actual expected] (= (split-into-terms actual) expected)
+      1001 [1 1000 1]
+      1002 [1 1000 2]
+      1010 [1 1000 10]
+      1018 [1 1000 18]
+      1020 [1 1000 20]
+      1021 [1 1000 20 1]
+      1045 [1 1000 40 5]
+      1100 [1 1000 1 100]
+      1123 [1 1000 1 100 20 3]))
+  (testing "10,000s with hundreds, tens and units place after them"
+    (are [actual expected] (= (split-into-terms actual) expected)
+      10001 [10 1000 1]
+      10020 [10 1000 20]
+      10027 [10 1000 20 7]
+      10100 [10 1000 1 100]
+      10120 [10 1000 1 100 20]
+      21125 [20 1 1000 1 100 20 5]
+      99999 [90 9 1000 9 100 90 9]))
+  (testing "100000s with thousands, tens and units place after them"
+    (are [actual expected] (= (split-into-terms actual) expected)
+      100001 [1 100 1000 1]
+      100020 [1 100 1000 20]
+      100027 [1 100 1000 20 7]
+      100101 [1 100 1000 1 100 1]
+      100120 [1 100 1000 1 100 20]
+      100127 [1 100 1000 1 100 20 7]
+      101001 [1 100 1 1000 1]
+      101020 [1 100 1 1000 20]
+      101023 [1 100 1 1000 20 3]
+      101101 [1 100 1 1000 1 100 1]
+      101120 [1 100 1 1000 1 100 20]
+      101127 [1 100 1 1000 1 100 20 7]
+      101999 [1 100 1 1000 9 100 90 9]
+      110001 [1 100 10 1000 1]
+      110010 [1 100 10 1000 10]
+      110021 [1 100 10 1000 20 1])))
