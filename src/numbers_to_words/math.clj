@@ -6,7 +6,7 @@
                (into (range 0 20))
                (into (range 20 100 10))))
 
-(def map-num-of-zeroes (zipmap (range) [0 1 2 3 3 3 6 6 6]))
+(def map-num-of-zeroes (zipmap (range) [0 1 2 3 3 3 6 6 6 9 9 9]))
 
 (defn raise-ten-by [x]
   (->> (repeat x "0")
