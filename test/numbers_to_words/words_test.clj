@@ -58,4 +58,13 @@
       [70 6] ["seventy" "six"]
       [80 7] ["eighty" "seven"]
       [90 8] ["ninety" "eight"]
-      [1 100] ["one" "hundred"])))
+      [1 100] ["one" "hundred"]
+      [1 100 20 3] ["one" "hundred" "and" "twenty" "three"]
+      [1 1000] ["one" "thousand"]
+      [1 1000 1 100] ["one" "thousand" "and" "one" "hundred"]
+
+      [5 100 80 5 1000 6 100 70 2]
+      ["five" "hundred" "and" "eighty" "five" "thousand" "and" "six" "hundred" "and" "seventy" "two"]
+      
+      [1 1000000 2 100 1000]
+      ["one" "million" "and" "two" "hundred" "thousand"])))
